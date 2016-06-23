@@ -1,0 +1,38 @@
+﻿@using Microsoft.AspNet.Identity
+<link rel="stylesheet" type="text/css" href="/Content/My css/Application.css">
+
+
+<header>
+    <div class="greet">
+        <p> <span>Logged user: </span>
+            <span style="color:yellow">@User.Identity.GetUserName()</span>
+        </p>
+        <p>
+            <span>YOU ARE: </span>
+            @if (User.IsInRole("Admin"))
+            {
+                <span style="color:red">ADMIN</span>
+            }
+            @if (User.IsInRole("Customer"))
+            {
+                <span style="color:green">CUSTOMER</span>
+            }
+            @if (User.IsInRole("Employee"))
+            {
+                <span style="color:blue">CUSTOMER</span>
+            }
+
+        </p>
+    </div>
+
+    <div class="header-content">
+        <div class="header-content-inner">
+            <h1>Welcome to Issue Tracker</h1>
+            <hr>
+            <p>List all customers -> their procejts, issues, comments and manage them</p>
+            <a href="/Information" class="btn btn-default btn-lg">Content &raquo;</a>
+
+
+        </div>
+    </div>
+</header>

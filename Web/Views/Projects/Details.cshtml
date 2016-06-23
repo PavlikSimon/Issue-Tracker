@@ -1,0 +1,104 @@
+﻿@model Web.Models.ShowIssueAttributesModel
+
+@{
+    ViewBag.Title = "Details";
+}
+<style>
+    body {
+        background-image: url("http://www.myfreetextures.com/wp-content/uploads/2011/06/illust31.jpg");
+    }
+</style>
+
+
+    <body>
+        <h2>Details</h2>
+
+        <div>
+            <h4>ProjectDTO</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.project.Name)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.project.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.project.Description)<br />
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.project.Description)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.project.Customer) (Id)<br />
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.project.Customer.Id)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.project.Issues) (Count)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.project.Issues.Count)
+                </dd>
+
+                <dt>
+                    Count of errors - newIssues
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.errorNewIssue)
+                </dd>
+                <dt>
+                    Count of errors - inProgress
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.errorInProgress)
+                </dd>
+                <dt>
+                    Count of errors - solved
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.errorSolved)
+                </dd>
+                <dt>
+                    Count of errors - declined
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.errorDeclined)
+                </dd>
+
+
+
+                <dt>
+                    Count of requests - newIssues
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.otherNewIssue)
+                </dd>
+                <dt>
+                    Count of requests - inProgress
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.otherInProgress)
+                </dd>
+                <dt>
+                    Count of requests - solved
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.otherSolved)
+                </dd>
+                <dt>
+                    Count of requests - declined
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.otherDeclined)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </body>

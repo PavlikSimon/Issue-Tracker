@@ -1,0 +1,113 @@
+﻿@using DAL.MyEnumerations
+@using Web.Models
+@model Web.Models.ProjectModel
+
+@{
+    ViewBag.Title = "Issues";
+}
+<style>
+    body {
+        background-image: url("http://www.myfreetextures.com/wp-content/uploads/2011/06/illust31.jpg");
+    }
+</style>
+<body>
+    <h2>Issues</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "IssuesCreate", new { id = Model.projectId })
+        <!-- @Html.ActionLink("Create New", "Create")-->
+    </p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.projectIssue.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projectIssue.ShortMessage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projectIssue.Requestor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projectIssue.TypeOfIssue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projectIssue.IssueStatus)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.projectIssue.Comments) (Count)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.projectIssues)
+    {
+        if (item.TypeOfIssue == TypeOfIssue.error)
+        {
+        <tr style="color: red;">
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortMessage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Requestor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeOfIssue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IssueStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comments.Count)
+            </td>
+            <td>
+                @Html.ActionLink("Comments", "Comments", new {id = item.Id}) |
+                @Html.ActionLink("Edit", "IssuesEdit", new {id = item.Id}) |
+                @Html.ActionLink("Details", "IssuesDetails", new {id = item.Id}) |
+                @Html.ActionLink("Delete", "IssuesDelete", new {id = item.Id})
+            </td>
+        </tr>
+        }
+        if (item.TypeOfIssue == TypeOfIssue.request)
+        {
+            <tr style="color: blue;">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShortMessage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Requestor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeOfIssue)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IssueStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comments.Count)
+                </td>
+                <td>
+                    @Html.ActionLink("Comments", "Comments", new { id = item.Id }) |
+                    @Html.ActionLink("Edit", "IssuesEdit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "IssuesDetails", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "IssuesDelete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Back to Projects", "RedirectToProjectsFromIssues", new {id = Model.projectId})
+</div>
+
+</body>

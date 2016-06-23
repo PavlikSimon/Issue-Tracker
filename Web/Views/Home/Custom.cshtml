@@ -1,0 +1,99 @@
+﻿@using Microsoft.AspNet.Identity
+@using Web.Helpers
+@model Web.Models.InformationModel
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/MyScripts/dangerFix.js"></script>
+
+<style>
+    body {
+        background-image: url("http://img01.deviantart.net/5d54/i/2013/184/5/1/seamless_royal_background__2__by_crealextion-d6bs5q0.jpg");
+        color: white;
+    }
+
+    butt {
+        border-style: double;
+        border-color: darkgray;
+        margin: 30px 0px 0px 0px;
+    }
+</style>
+
+
+<head>
+    <h2>Overview</h2>
+    <div class="greet">
+        <p>
+            <span>Logged user: </span>
+            <span style="color:yellow">@User.Identity.GetUserName()</span>
+        </p>
+        <p>
+            <span>YOU ARE: </span>
+            @if (User.IsInRole("Admin"))
+            {
+                <span style="color:red">ADMIN</span>
+            }
+            @if (User.IsInRole("Customer"))
+            {
+                <span style="color:green">CUSTOMER</span>
+            }
+            @if (User.IsInRole("Employee"))
+            {
+                <span style="color:blue">CUSTOMER</span>
+            }
+
+        </p>
+    </div>
+
+</head>
+<body>
+
+    <butt class="col-md-4">
+        <h2>Customers</h2>
+        <p>View Customers </p>
+        <p>
+            <a class="btn btn-default" href="/Customers">Learn more &raquo;</a>
+        </p>
+    </butt>
+
+    <butt class="col-md-4">
+        <h2>Issues</h2>
+        <p>View Issues</p>
+        <p>
+            <a class="btn btn-default" href="/Issues">Learn more &raquo;</a>
+        </p>
+    </butt>
+
+<butt class="col-md-4">
+    <h2>Projects</h2>
+    <p>List of actual projects</p>
+    <p>
+        <a class="btn btn-default" href="/Projects">Learn more &raquo;</a>
+    </p>
+</butt>
+
+<butt class="col-md-4">
+    <h2>Employees</h2>
+    <p>Here you can list employees</p>
+    <p>
+        <a class="btn btn-default" href="/Employees">Learn more &raquo;</a>
+    </p>
+</butt>
+
+<butt class="col-md-4">
+    <h2>Comments</h2>
+    <p>Here you can list comments</p>
+    <p>
+        <a class="btn btn-default" href="/Comments">Learn more &raquo;</a>
+    </p>
+</butt>
+
+<butt class="col-md-4">
+    <h2>Registered users</h2>
+    <p>Here you can list of registered users</p>
+    <p>
+        <a class="btn btn-default" href="/Users">Learn more &raquo;</a>
+    </p>
+</butt>
+
+
+</body>

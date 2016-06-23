@@ -1,0 +1,64 @@
+﻿@using Web.Models
+@model Web.Models.InformationModel
+
+@{
+    ViewBag.Title = "Projects";
+}
+<style>
+    body {
+        background-image: url("http://www.myfreetextures.com/wp-content/uploads/2011/06/illust31.jpg");
+    }
+</style>
+<body>
+    <h2>Projects</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "ProjectsCreate", new { id = Model.customerId })
+        <!-- @Html.ActionLink("Create New", "Create")-->
+    </p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.InfoProject.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InfoProject.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InfoProject.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InfoProject.Issues) (Count)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.InfoProjects)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Issues.Count)
+            </td>
+            <td>
+                @Html.ActionLink("Issues", "Issues", new { id = item.Id }) |
+                @Html.ActionLink("Edit", "ProjectsEdit", new {id = item.Id}) |
+                @Html.ActionLink("Details", "ProjectsDetails", new {id = item.Id}) |
+                @Html.ActionLink("Delete", "ProjectDelete", new {id = item.Id})
+            </td>
+        </tr>
+    }
+
+</table>
+    <div>
+        @Html.ActionLink("Back to Customers", "Index")
+    </div>
+</body>

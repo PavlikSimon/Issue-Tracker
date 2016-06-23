@@ -1,0 +1,58 @@
+﻿@using DAL.MyEnumerations
+@model Web.Models.EmployeeModel
+
+<style>
+    body {
+        background-image: url("http://www.myfreetextures.com/wp-content/uploads/2011/06/illust31.jpg");
+    }
+</style>
+
+<h2>Add Issue to Employee</h2>
+
+        <h4>Choose which project will be handled by this employee (ID: @Model.employeeId)</h4>
+
+
+    <table class="table">
+        <tr>
+            <td><strong>ID</strong></td>
+            <td><strong>Name</strong></td>
+            <td><strong>Project</strong></td>
+            <td><strong>This ISSUE</strong></td>
+        </tr>
+        @foreach (var item in Model.issues)
+        {
+            if (item.TypeOfIssue == TypeOfIssue.error)
+            {
+                <tr style="color:red">
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>@item.ShortMessage</td>
+                    <td>@item.Project.Name - ID: @item.Project.Id</td>
+                    <td>
+                        @Html.ActionLink("Add to this", "AddToIssue2", new { employeeId = Model.employeeId, issueId = item.Id })
+                    </td>
+                </tr>
+            }
+            if (item.TypeOfIssue == TypeOfIssue.request)
+            {
+                <tr style="color:blue">
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>@item.ShortMessage</td>
+                    <td>@item.Project.Name - ID: @item.Project.Id</td>
+                    <td>
+                        @Html.ActionLink("Add to this", "AddToIssue2", new { employeeId = Model.employeeId, issueId = item.Id })
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+</body>

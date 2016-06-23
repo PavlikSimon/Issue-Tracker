@@ -1,0 +1,67 @@
+﻿@model BL.DTO.IssueDTO
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<style>
+    body {
+        background-image: url("http://www.myfreetextures.com/wp-content/uploads/2011/06/illust31.jpg");
+    }
+</style>
+
+<body>
+    <h2>Edit</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+        @Html.HiddenFor(model => Model.Project)
+        @Html.HiddenFor(model => Model.CreatedDate)
+        <div class="form-horizontal">
+            <h4>Issues</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                
+
+                @Html.HiddenFor(model => Model.CreatedDate)
+                @Html.HiddenFor(model => Model.Project)
+
+                @Html.LabelFor(model => model.ShortMessage, htmlAttributes: new {@class = "control-label col-md-2"})
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ShortMessage, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.ShortMessage, "", new {@class = "text-danger"})
+                </div>
+                @Html.LabelFor(model => model.Text, htmlAttributes: new {@class = "control-label col-md-2"})
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Text, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.Text, "", new {@class = "text-danger"})
+                </div>
+                @Html.LabelFor(model => model.Requestor, htmlAttributes: new {@class = "control-label col-md-2"})
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Requestor, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.Requestor, "", new {@class = "text-danger"})
+                </div>
+
+                @Html.LabelFor(model => model.IssueStatus, htmlAttributes: new {@class = "control-label col-md-2"})
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IssueStatus, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.IssueStatus, "", new {@class = "text-danger"})
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Change" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>

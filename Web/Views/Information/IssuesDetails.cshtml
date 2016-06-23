@@ -1,0 +1,86 @@
+﻿@model BL.DTO.IssueDTO
+
+@{
+    ViewBag.Title = "Details";
+}
+<style>
+    body {
+        background-image: url("http://www.myfreetextures.com/wp-content/uploads/2011/06/illust31.jpg");
+    }
+</style>
+
+
+<body>
+    <h2>Details</h2>
+
+    <div>
+        <h4>ProjectDTO</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Requestor)<br />
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Requestor)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ShortMessage)<br/>
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ShortMessage)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Text)<br />
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Text)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.TypeOfIssue)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.TypeOfIssue)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedDate)<br/>
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CreatedDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.SolvedDate)<br />
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SolvedDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Comments) (Count)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Comments.Count)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.IssueStatus)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.IssueStatus)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Employee) (Name-ID)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Employee.Name) - @Html.DisplayFor(model => model.Employee.Id)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Back to List", "Issues", new {id = Model.Project.Id})
+    </p>
+</body>
